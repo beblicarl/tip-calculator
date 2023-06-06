@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import Bill from "./Bill";
 import SelectTip from "./SelectTip";
 import NumberOfPeople from "./People";
@@ -15,7 +16,11 @@ export default function Calculator() {
     fiftyPercent: 0,
     people: 0,
   });
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [tipAmount, setTipAmount] = useState(0.0);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -48,17 +53,22 @@ export default function Calculator() {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // submitToApi(formData)
-    if (formData.people > 0) {
-      console.log(formData);
-      setIsSubmitted(true);
-      console.log(isSubmitted);
-    } else {
-      console.log("People field can't be left empty");
-      return;
-    }
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // submitToApi(formData)
+  //   if (formData.people > 0) {
+  //     console.log(formData);
+  //     setIsSubmitted(true);
+  //     console.log(isSubmitted);
+  //   } else {
+  //     console.log("People field can't be left empty");
+  //     return;
+  //   }
+  // };
+
+  const onSubmit = () => {
+    console.log(formData);
+    setIsSubmitted(true);
   };
 
   const handleRefresh = () => {
@@ -87,7 +97,7 @@ export default function Calculator() {
         <br />
         tter
       </h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-fields">
           <Bill
             type="text"
@@ -108,6 +118,8 @@ export default function Calculator() {
             id="people"
             value={formData.people}
             onChange={handleChange}
+            errors={errors}
+            register={register}
           />
         </div>
         <Amount
