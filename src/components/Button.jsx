@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 
-export function Button(props) {
+export function Button({ type, name, registration, onClick, number, ...rest }) {
   return (
     <button
-      type={props.type}
-      name={props.name}
-      value={props.value}
-      onClick={props.onClick}
+      type={type}
+      name={name}
+      onClick={onClick}
+      {...registration}
+      {...rest}
+      defaultValue={number}
     >
-      {props.number}%
+      {number}%
     </button>
   );
 }
