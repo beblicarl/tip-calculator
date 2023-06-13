@@ -23,7 +23,7 @@ export default function Amount(props) {
       {props.isSubmitted ? (
         <button onClick={props.handleRefresh}>REFRESH</button>
       ) : (
-        <button onClick={props.handleTotalAmount}>SUBMIT</button>
+        <button type="submit">SUBMIT</button>
       )}
     </div>
   );

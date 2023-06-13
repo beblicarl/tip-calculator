@@ -3,62 +3,42 @@ import { Button } from "./Button";
 import FormInput from "./FormInput";
 
 export default function SelectTip(props) {
-  const handlefive = () => {
-    props.setFormData((prevData) => {
-      return { ...prevData, fivePercent: 5 };
-    });
-  };
-  const handleten = () => {
-    props.setFormData((prevData) => {
-      return { ...prevData, tenPercent: 10 };
-    });
-  };
-  const handlefifteen = () => {
-    props.setFormData((prevData) => {
-      return { ...prevData, fifteenPercent: 15 };
-    });
-  };
-  const handletweentyfive = () => {
-    props.setFormData((prevData) => {
-      return { ...prevData, twentyfivePercent: 25 };
-    });
-  };
-  const handlefifty = () => {
-    props.setFormData((prevData) => {
-      return { ...prevData, fiftyPercent: 50 };
-    });
-  };
-
   return (
     <div className="select-tip">
       <p>Select Tip %</p>
       <div className="select-tip-children">
         <Button
+          registration={props.register("buttonField")}
           type="button"
-          name="fivePercent"
-          value={props.formData.fivePercent}
-          onClick={handlefive}
+          name="buttonField"
+          id="buttonField"
+          defaultValue={5}
           number={5}
+          onClick={() => props.handleButtonClick(5)}
         >
           5%
         </Button>
 
         <Button
+          registration={props.register("buttonField")}
           type="button"
-          name="tenPercent"
-          value={props.formData.tenPercent}
-          onClick={handleten}
+          name="buttonField"
+          id="buttonField"
+          defaultValue={10}
+          onClick={() => props.handleButtonClick(10)}
           number={10}
-        >
-          10%
-        </Button>
+          placeholder={10}
+        ></Button>
 
         <Button
+          registration={props.register("buttonField")}
           type="button"
-          name="fifteenPercent"
-          value={props.formData.fifteenPercent}
-          onClick={handlefifteen}
+          name="buttonField"
+          id="buttonField"
+          defaultValue={15}
+          onClick={() => props.handleButtonClick(15)}
           number={15}
+          placeholder={15}
         >
           15%
         </Button>
@@ -66,31 +46,36 @@ export default function SelectTip(props) {
         <br />
         <br />
         <Button
+          registration={props.register("buttonField")}
           type="button"
-          name="twentyfivePercent"
-          value={props.formData.twentyfivePercent}
-          onClick={handletweentyfive}
+          name="buttonField"
+          id="buttonField"
+          defaultValue={25}
+          onClick={() => props.handleButtonClick(25)}
           number={25}
+          placeholder={25}
         >
           25%
         </Button>
 
         <Button
+          registration={props.register("buttonField")}
           type="button"
-          name="fiftyPercent"
-          value={props.formData.fiftyPercent}
-          onClick={handlefifty}
+          name="buttonField"
+          id="buttonField"
+          defaultValue={50}
+          onClick={() => props.handleButtonClick(50)}
           number={50}
+          placeholder={50}
         >
           50%
         </Button>
 
         <FormInput
+          registration={props.register("custom")}
           type="text"
           name="custom"
           id="custom"
-          value={props.formData.custom}
-          onChange={props.handleChange}
           placeholder="Custom"
         ></FormInput>
       </div>
