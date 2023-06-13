@@ -1,13 +1,32 @@
 /* eslint-disable react/prop-types */
-export default function FormInput(props) {
+const FormInput = ({
+  text,
+  name,
+  id,
+  placeholder,
+  error,
+  registration,
+  defaultValue,
+  ...rest
+}) => {
   return (
-    <input
-      type={props.text}
-      name={props.name}
-      id={props.id}
-      value={props.value}
-      onChange={props.onChange}
-      placeholder={props.placeholder}
-    ></input>
+    <>
+      <input
+        type={text}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        defaultValue={defaultValue}
+        {...registration}
+        {...rest}
+      ></input>
+      {error?.message && (
+        <span className="error" role="alert" aria-label={error.message}>
+          {error.message}
+        </span>
+      )}
+    </>
   );
-}
+};
+
+export default FormInput;
